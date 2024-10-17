@@ -1236,6 +1236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerLocomotionHandler: {fileID: 515732063566655833}
   cameraManager: {fileID: 725711720319384260}
+  weaponManager: {fileID: 1741261060819447440}
   verticalInput: 0
   horizontalInput: 0
   jumpInput: 0
@@ -1243,6 +1244,7 @@ MonoBehaviour:
   moveAmount: 0
   scrollInput: 0
   cameraInput: {x: 0, y: 0}
+  fireInput: 0
   isPauseKeyPressed: 0
 --- !u!114 &539660397265550189
 MonoBehaviour:
@@ -4042,6 +4044,7 @@ GameObject:
   - component: {fileID: 1308513348906308259}
   - component: {fileID: 515732063566655833}
   - component: {fileID: 322026907196466210}
+  - component: {fileID: 1741261060819447440}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -4137,6 +4140,22 @@ CharacterController:
   m_SkinWidth: 0.01
   m_MinMoveDistance: 0.00001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1741261060819447440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7034935583075056663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada25d639d92b9b469f1c7087aa9cffe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugMode: 1
+  inputManager: {fileID: 5697578372536420906}
+  cameraManager: {fileID: 725711720319384260}
+  maxRange: 10
 --- !u!1 &7223833058263259775
 GameObject:
   m_ObjectHideFlags: 0

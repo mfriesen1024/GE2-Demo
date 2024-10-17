@@ -1,3 +1,6 @@
+using Assets.Scripts.Managers;
+using System.Collections;
+using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,6 +14,7 @@ public class InputManager : MonoBehaviour
     // Script References
     [SerializeField] private PlayerLocomotionHandler playerLocomotionHandler;
     [SerializeField] private CameraManager cameraManager; // Reference to CameraManager
+    [SerializeField] private WeaponManager weaponManager;
 
 
     [Header("Movement Inputs")]
@@ -24,11 +28,15 @@ public class InputManager : MonoBehaviour
     public float scrollInput; // Scroll input for camera zoom
     public Vector2 cameraInput; // Mouse input for the camera
 
+    [Header("Interaction Inputs")]
+    public bool fireInput = true;
+
     public bool isPauseKeyPressed = false;
 
 
     public void HandleAllInputs()
     {
+        HandleFireInput();
         HandleMovementInput();
         HandleSprintingInput();
         HandleCameraInput();
@@ -77,5 +85,20 @@ public class InputManager : MonoBehaviour
         {
             playerLocomotionHandler.isSprinting = false;
         }
+    }
+
+    private void HandleJumpInput()
+    {
+        jumpInput = Input.GetKeyDown(KeyCode.Space); // Detect jump input (spacebar)
+        if (jumpInput)
+        {
+            playerLocomotionHandler.HandleJump(); // Trigger jump in locomotion handler
+        }
+    }
+
+    void HandleFireInput()
+    {
+        fireInput = Input.GetMouseButtonDown(0);
+        if (fireInput) { weaponManager.Fire(); }
     }
 }
