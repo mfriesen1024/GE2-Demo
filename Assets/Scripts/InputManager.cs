@@ -36,7 +36,6 @@ public class InputManager : MonoBehaviour
 
     public void HandleAllInputs()
     {
-        HandleFireInput();
         HandleMovementInput();
         HandleSprintingInput();
         HandleCameraInput();
@@ -47,7 +46,7 @@ public class InputManager : MonoBehaviour
     void OnLook(InputValue value) { cameraInput = value.Get<Vector2>(); }
     void OnSprint(InputValue value) { sprintInput = value.Get<float>() == 1; }
     void OnJump(InputValue value) { playerLocomotionHandler.HandleJump(); }
-    void OnFire(InputValue value) { Debug.LogException(new NotImplementedException("This is implemented in 1.4.0")); }
+    void OnFire(InputValue value) { weaponManager.Fire(); }
 
     private void HandleCameraInput()
     {
@@ -85,20 +84,5 @@ public class InputManager : MonoBehaviour
         {
             playerLocomotionHandler.isSprinting = false;
         }
-    }
-
-    private void HandleJumpInput()
-    {
-        jumpInput = Input.GetKeyDown(KeyCode.Space); // Detect jump input (spacebar)
-        if (jumpInput)
-        {
-            playerLocomotionHandler.HandleJump(); // Trigger jump in locomotion handler
-        }
-    }
-
-    void HandleFireInput()
-    {
-        fireInput = Input.GetMouseButtonDown(0);
-        if (fireInput) { weaponManager.Fire(); }
     }
 }
